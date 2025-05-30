@@ -1,10 +1,22 @@
 
+//It contains right side of the bag page : calculation part 
 import { useSelector } from 'react-redux';
 
 const BagSummary=()=>{
 
 const bagItemsIds = useSelector((state)=> state.bag);      //to get items from bag
-const items = useSelector((state)=> state.items); //all items 
+// const items = useSelector((state)=> state.items); //all items 
+
+
+const items = useSelector((state) => [
+  ...state.items,
+  ...state.mens,
+  ...state.womens,
+  ...state.kids,
+  ...state.beauty,
+  ...state.home
+]);
+
 //to get elements from bag via index
 const finalItems= items.filter((item)=>{  
   const itemIndex= bagItemsIds.indexOf(item.id); 
