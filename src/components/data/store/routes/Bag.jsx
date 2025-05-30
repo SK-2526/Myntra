@@ -4,8 +4,17 @@ import BagSummary from '../components/BagSummary'
 
 const Bag= ()=>{
 
-const bagItems = useSelector((state)=> state.bag);//to get items from bag
-const items = useSelector((state)=> state.items); //all items 
+const bagItems = useSelector((state)=> state.bag); //to get items from bag
+// const items = useSelector((state)=> state.items);  //all items 
+
+const items = useSelector((state) => [
+  ...state.items,   // home page items
+  ...state.mens,    // mens page items
+  ...state.womens,   // womens page items
+  ...state.kids,
+  ...state.beauty,
+  ...state.home
+]);
 
 //to get elements from bag via index
 const finalItems= items.filter((item)=>{  
